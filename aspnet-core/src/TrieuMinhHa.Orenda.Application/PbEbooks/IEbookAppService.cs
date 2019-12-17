@@ -7,7 +7,7 @@ namespace TrieuMinhHa.Orenda.PbEbooks
 {
     public interface IEbookAppService : IApplicationService
     {
-        Task<ListResultDto<EbookListDto>> GetAll();
+        Task<ListResultDto<EbookViewDto>> GetAll(EbooktoViewInput input);
         Task CreateOrEdit(CreatorEditEbookDto input);
 
         Task Delete(EntityDto input);
