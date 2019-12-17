@@ -4,7 +4,7 @@ using Abp.Domain.Entities.Auditing;
 using System;
 using TrieuMinhHa.Orenda.Authorization.Ebook;
 
-namespace TrieuMinhHa.Orenda.Ebook.Dto
+namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 {
 	[AutoMap(typeof(Ebook))]
 	public class EbookListDto : FullAuditedEntity

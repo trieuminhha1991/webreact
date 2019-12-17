@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TrieuMinhHa.Orenda.Ebook
+namespace TrieuMinhHa.Orenda.PbEbooks
 {
     class EbookAppService
     {

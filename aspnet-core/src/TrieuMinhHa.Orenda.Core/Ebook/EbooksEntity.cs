@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities.Auditing;
 using TrieuMinhHa.Orenda.Authorization.EbookRelationship;
-using TrieuMinhHa.Orenda.Authorization.Users;
 
 namespace TrieuMinhHa.Orenda.Authorization.Ebook
 {
