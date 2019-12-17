@@ -1,15 +1,15 @@
 ﻿using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using TrieuMinhHa.Orenda.Roles.Dto;
-using TrieuMinhHa.Orenda.Users.Dto;
+using TrieuMinhHa.Orenda.PbEbooks.Dto;
 
 namespace TrieuMinhHa.Orenda.PbEbooks
 {
-    public interface IEbookAppService : IAsyncCrudAppService<UserDto, long, PagedUserResultRequestDto, CreateUserDto, UserDto>
+    public interface IEbookAppService : IApplicationService
     {
-        Task<ListResultDto<RoleDto>> GetAll();
+        Task<ListResultDto<EbookListDto>> GetAll();
+        Task CreateOrEdit(CreatorEditEbookDto input);
 
-        Task ChangeLanguage(ChangeUserLanguageDto input);
+        Task Delete(EntityDto input);
     }
 }
