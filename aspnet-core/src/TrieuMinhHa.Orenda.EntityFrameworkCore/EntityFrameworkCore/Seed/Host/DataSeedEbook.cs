@@ -24,6 +24,10 @@ namespace TrieuMinhHa.Orenda.EntityFrameworkCore.Seed.Host
         {
             CreateClass();
             CreateRank();
+            CreateStatus();
+            CreateSubjectEducation();
+            CreateTypeBook();
+            CreateTypeFile();
         }
         public void CreateClass()
         {
@@ -130,6 +134,27 @@ namespace TrieuMinhHa.Orenda.EntityFrameworkCore.Seed.Host
                     new PbSubjectEducation
                     {
                         SubjectName = "Tiếng anh",
+                    });
+            }
+        }
+        public void CreateTypeBook()
+        {
+            var TypeBook = _context.PbTypeEbooks.FirstOrDefault(p => p.TypeName == "Đề thi");
+            if (TypeBook == null)
+            {
+                _context.PbTypeEbooks.Add(
+                    new PbTypeEbook
+                    {
+                        TypeName = "Đề thi",
+                    });
+            }
+            TypeBook = _context.PbTypeEbooks.FirstOrDefault(p => p.TypeName == "Chuyên đề");
+            if (TypeBook == null)
+            {
+                _context.PbTypeEbooks.Add(
+                    new PbTypeEbook
+                    {
+                        TypeName = "Chuyên đề",
                     });
             }
         }
