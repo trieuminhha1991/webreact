@@ -182,7 +182,7 @@ namespace TrieuMinhHa.Orenda.PbEbooks
         }
         public async Task<ListResultDto<StatusDto>> GetAllStatus()
         {
-            var pbStatus = _rankRepository.GetAll();
+            var pbStatus = _statusRepository.GetAll();
             var Statuses = from o in pbStatus
                          select new StatusDto
                          {
