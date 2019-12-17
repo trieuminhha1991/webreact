@@ -2,6 +2,7 @@
 using Abp.AutoMapper;
 using Abp.Domain.Entities.Auditing;
 using System;
+using System.ComponentModel.DataAnnotations;
 using TrieuMinhHa.Orenda.Authorization.Ebook;
 
 namespace TrieuMinhHa.Orenda.PbEbooks.Dto
@@ -9,8 +10,9 @@ namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 	[AutoMap(typeof(Ebook))]
 	public class CreatorEditEbookDto : FullAuditedEntity
 	{
+		[Required]
 		public string EbookName { get; set; }
-
+		[Required]
 		public string Link { get; set; }
 
 		public DateTime? EbookDateStart { get; set; }
