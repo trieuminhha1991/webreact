@@ -3,7 +3,7 @@ const AppConsts = {
     defaultAdminUserName: 'admin',
   },
   localization: {
-    defaultLocalizationSourceName: 'Orenda',
+    defaultLocalizationSourceName: 'hahaah',
   },
   authorization: {
     encrptedAuthTokenName: 'enc_auth_token',
