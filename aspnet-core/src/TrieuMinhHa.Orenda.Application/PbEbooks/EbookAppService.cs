@@ -190,7 +190,7 @@ namespace TrieuMinhHa.Orenda.PbEbooks
                              StatusName = o.StatusName
                          };
             var totalCount = await Statuses.CountAsync();
-            return new PagedResultDto<RankDto>(
+            return new PagedResultDto<StatusDto>(
                 totalCount,
                 await Statuses.ToListAsync()
             );

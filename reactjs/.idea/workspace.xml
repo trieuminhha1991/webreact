@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da7f4801-e734-4d69-93f3-a770acfb2698" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/services/ebook/dto/pagedEbookResultRequestDto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../aspnet-core/src/TrieuMinhHa.Orenda.Application/PbEbooks/Dto/EbookListDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../aspnet-core/src/TrieuMinhHa.Orenda.Application/PbEbooks/Dto/EbookListDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/ebook/dto/EbookRelationshipDto.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aspnet-core/src/TrieuMinhHa.Orenda.Application/PbEbooks/EbookAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../aspnet-core/src/TrieuMinhHa.Orenda.Application/PbEbooks/EbookAppService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ebook/dto/pagedEbookResultRequestDto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ebook/dto/pagedEbookResultRequestDto.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/ebook/ebookService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ebook/ebookService.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +37,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/services/ebook/dto/pagedEbookResultRequestDto.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="43" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="43" />
+            <state relative-caret-position="306">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/ebook/dto/EbookRelationshipDto.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="25" selection-start-column="17" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -45,22 +55,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/services/ebook/ebookService.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+            <state relative-caret-position="493">
+              <caret line="29" column="113" selection-start-line="29" selection-start-column="113" selection-end-line="29" selection-end-column="113" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/user/userService.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="23" column="3" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="23" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#64#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,12 +94,13 @@
         <option value="$PROJECT_DIR$/src/services/ebook/dto/EbooktoViewInput.ts" />
         <option value="$PROJECT_DIR$/src/services/ebook/dto/EbookDto.ts" />
         <option value="$PROJECT_DIR$/src/services/ebook/dto/CreatorEditEbookDto.ts" />
+        <option value="$PROJECT_DIR$/src/services/ebook/dto/EbookRelationshipDto.ts" />
         <option value="$PROJECT_DIR$/src/services/ebook/dto/pagedEbookResultRequestDto.ts" />
         <option value="$PROJECT_DIR$/src/services/ebook/ebookService.ts" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-79" />
     <option name="y" value="32" />
     <option name="width" value="1124" />
@@ -216,18 +215,18 @@
       <workItem from="1576497834082" duration="2723000" />
       <workItem from="1576511209339" duration="67000" />
       <workItem from="1576512506507" duration="2427000" />
-      <workItem from="1576549412659" duration="5181000" />
+      <workItem from="1576549412659" duration="6535000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10398000" />
+    <option name="totallyTimeSpent" value="11752000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-79" y="32" width="1124" height="1003" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1923077" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33609575" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -391,13 +390,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/ebook/dto/EbookDto.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/abpUserConfigurationService.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -444,13 +436,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/ebook/dto/EbooktoViewInput.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="33" selection-start-column="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/ebook/dto/getAllEbooktoView.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -472,10 +457,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/ebook/dto/EbooktoViewInput.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="33" selection-start-column="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/services/ebook/dto/pagedEbookResultRequestDto.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="43" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="43" />
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/ebook/dto/EbookDto.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/ebook/dto/EbookRelationshipDto.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" selection-start-column="17" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -491,8 +497,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/ebook/ebookService.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="493">
+          <caret line="29" column="113" selection-start-line="29" selection-start-column="113" selection-end-line="29" selection-end-column="113" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
