@@ -150,7 +150,7 @@ namespace TrieuMinhHa.Orenda.PbEbooks
         {
             _ebookRepository.DeleteAsync(input.Id);
         }
-        public async Task<ListResultDto<ClassDto>> GetAllClassName()
+        public async Task<ListResultDto<ClassDto>> GetAllClass()
         {
             var pbClasses = _classRepository.GetAll();
             var Classes = from o in pbClasses
