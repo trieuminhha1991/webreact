@@ -10,7 +10,7 @@ namespace TrieuMinhHa.Orenda.PbEbooks
 {
     public class EBookAppService : ApplicationService, IEbookAppService
     {
-        public Task<ListResultDto<EbookListDto>> GetAll()
+        public Task<ListResultDto<EbookViewDto>> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -23,8 +23,6 @@ namespace TrieuMinhHa.Orenda.PbEbooks
         {
             throw new NotImplementedException();
         }
-
-        
     }
 
 }

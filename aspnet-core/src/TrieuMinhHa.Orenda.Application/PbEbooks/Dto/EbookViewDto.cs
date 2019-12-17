@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 {
-    class EbookViewDto
+	public class EbookViewDto
     {
         public EbookListDto EbookListDto { get; set; }
 
