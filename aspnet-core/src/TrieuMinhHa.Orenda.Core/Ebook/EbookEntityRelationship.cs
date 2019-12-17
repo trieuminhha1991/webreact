@@ -38,8 +38,6 @@ namespace TrieuMinhHa.Orenda.Authorization.EbookRelationship
         public virtual string RankName { get; set; }
 
         public virtual string Description { get; set; }
-
-
     }
     [Table("PbStatuses")]
     public class PbStatus : Entity

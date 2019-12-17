@@ -150,6 +150,81 @@ namespace TrieuMinhHa.Orenda.PbEbooks
         {
             _ebookRepository.DeleteAsync(input.Id);
         }
+        public async Task<ListResultDto<ClassDto>> GetAllClassName()
+        {
+            var pbClasses = _classRepository.GetAll();
+            var Classes = from o in pbClasses
+                          select new ClassDto
+                          {
+                              Id = o.Id,
+                              ClassName = o.ClassName
+                          };
+            var totalCount = await Classes.CountAsync();
+            return new PagedResultDto<ClassDto>(
+                totalCount,
+                await Classes.ToListAsync()
+            );
+        }
+        public async Task<ListResultDto<RankDto>> GetAllRank()
+        {
+            var pbRankes = _rankRepository.GetAll();
+            var Rankes = from o in pbRankes
+                          select new RankDto
+                          {
+                              Id = o.Id,
+                              RankName = o.RankName
+                          };
+            var totalCount = await Rankes.CountAsync();
+            return new PagedResultDto<RankDto>(
+                totalCount,
+                await Rankes.ToListAsync()
+            );
+        }
+        public async Task<ListResultDto<StatusDto>> GetAllStatus()
+        {
+            var pbStatus = _rankRepository.GetAll();
+            var Statuses = from o in pbStatus
+                         select new StatusDto
+                         {
+                             Id = o.Id,
+                             StatusName = o.StatusName
+                         };
+            var totalCount = await Statuses.CountAsync();
+            return new PagedResultDto<RankDto>(
+                totalCount,
+                await Statuses.ToListAsync()
+            );
+        }
+        public async Task<ListResultDto<TypeBookDto>> GetAllTypeBook()
+        {
+            var pbTypeBook = _typeBookRepository.GetAll();
+            var TypeBookes = from o in pbTypeBook
+                             select new TypeBookDto
+                             {
+                               Id = o.Id,
+                               TypeName = o.TypeName
+                             };
+            var totalCount = await TypeBookes.CountAsync();
+            return new PagedResultDto<TypeBookDto>(
+                totalCount,
+                await TypeBookes.ToListAsync()
+            );
+        }
+        public async Task<ListResultDto<TypeFileDto>> GetAllTypeFile()
+        {
+            var pbTypeFile = _typeFileRepository.GetAll();
+            var TypeFiles = from o in pbTypeFile
+                             select new TypeFileDto
+                             {
+                                 Id = o.Id,
+                                 TypeFileName = o.TypeFileName
+                             };
+            var totalCount = await TypeFiles.CountAsync();
+            return new PagedResultDto<TypeFileDto>(
+                totalCount,
+                await TypeFiles.ToListAsync()
+            );
+        }
     }
 
 }
