@@ -9,3 +9,4 @@ aspnet-core/src/TrieuMinhHa.Orenda.Web.Mvc/App_Data/Logs/
 aspnet-core/src/TrieuMinhHa.Orenda.Migrator/Logs/Logs.txt
 aspnet-core/src/TrieuMinhHa.Orenda.EntityFrameworkCore/Migrations/OrendaDbContextModelSnapshot.cs
 appsettings.json
+.idea/
