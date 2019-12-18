@@ -54,13 +54,13 @@ namespace TrieuMinhHa.Orenda.PbEbooks
                         .Include(e => e.PbStatusFk)
                         .Include(e => e.PbTypeEbookFk)
                         .Include(e => e.PbTypeFileFk)
-                        .WhereIf(!string.IsNullOrWhiteSpace(input.EbookNameFilter), e => e.EbookName.ToLower() == input.EbookNameFilter.ToLower().Trim())
-                        .WhereIf(!string.IsNullOrWhiteSpace(input.UserNameFilter), e => e.UserFk != null && e.UserFk.Name.ToLower() == input.UserNameFilter.ToLower().Trim())
-                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbClassClassNameFilter), e => e.PbClassFk != null && e.PbClassFk.ClassName.ToLower() == input.PbClassClassNameFilter.ToLower().Trim())
-                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbRankRankNameFilter), e => e.PbRankFk != null && e.PbRankFk.RankName.ToLower() == input.PbRankRankNameFilter.ToLower().Trim())
-                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbStatusStatusNameFilter), e => e.PbStatusFk != null && e.PbStatusFk.StatusName.ToLower() == input.PbStatusStatusNameFilter.ToLower().Trim())
-                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbTypeEbookTypeNameFilter), e => e.PbTypeEbookFk != null && e.PbTypeEbookFk.TypeName.ToLower() == input.PbTypeEbookTypeNameFilter.ToLower().Trim())
-                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbTypeFileTypeFileNameFilter), e => e.PbTypeFileFk != null && e.PbTypeFileFk.TypeFileName.ToLower() == input.PbTypeFileTypeFileNameFilter.ToLower().Trim());
+                        .WhereIf(!string.IsNullOrWhiteSpace(input.EbookNameFilter), e => e.EbookName.ToLower().Contains(input.EbookNameFilter.ToLower().Trim()))
+                        .WhereIf(!string.IsNullOrWhiteSpace(input.UserNameFilter), e => e.UserFk != null && e.UserFk.Name.ToLower().Contains(input.UserNameFilter.ToLower().Trim()))
+                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbClassClassNameFilter), e => e.PbClassFk != null && e.PbClassFk.ClassName.ToLower().Contains(input.PbClassClassNameFilter.ToLower().Trim()))
+                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbRankRankNameFilter), e => e.PbRankFk != null && e.PbRankFk.RankName.ToLower().Contains(input.PbRankRankNameFilter.ToLower().Trim()))
+                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbStatusStatusNameFilter), e => e.PbStatusFk != null && e.PbStatusFk.StatusName.ToLower().Contains(input.PbStatusStatusNameFilter.ToLower().Trim()))
+                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbTypeEbookTypeNameFilter), e => e.PbTypeEbookFk != null && e.PbTypeEbookFk.TypeName.ToLower().Contains(input.PbTypeEbookTypeNameFilter.ToLower().Trim()))
+                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbTypeFileTypeFileNameFilter), e => e.PbTypeFileFk != null && e.PbTypeFileFk.TypeFileName.ToLower().Contains(input.PbTypeFileTypeFileNameFilter.ToLower().Trim()));
 
             var pagedAndFilteredPbEbooks = filteredPbEbooks
                 .OrderBy(input.Sorting ?? "id asc")
