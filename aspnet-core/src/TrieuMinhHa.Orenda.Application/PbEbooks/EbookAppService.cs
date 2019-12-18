@@ -29,9 +29,16 @@ namespace TrieuMinhHa.Orenda.PbEbooks
         private readonly IRepository<PbTypeEbook, int> _typeBookRepository;
         private readonly IRepository<PbTypeFile, int> _typeFileRepository;
 
-        public EBookAppService(IRepository<Ebook> ebook, IRepository<User,long> user,IRepository<PbClass, int> classRep,
-            IRepository<PbPlace, int> pbplace, IRepository<PbRank, int> rank, IRepository<PbStatus, int> status, IRepository<PbSubject, int> subject,
-            IRepository<PbSubjectEducation, int> SubjectEducation, IRepository<PbTypeEbook, int> typeBook, IRepository<PbTypeFile, int> typeFile
+        public EBookAppService(IRepository<Ebook> ebook, 
+            IRepository<User,long> user,
+            IRepository<PbClass, int> classRep,
+            IRepository<PbPlace, int> pbplace, 
+            IRepository<PbRank, int> rank, 
+            IRepository<PbStatus, int> status, 
+            IRepository<PbSubject, int> subject,
+            IRepository<PbSubjectEducation, int> SubjectEducation, 
+            IRepository<PbTypeEbook, int> typeBook, 
+            IRepository<PbTypeFile, int> typeFile
             )
         {
             _ebookRepository = ebook;
