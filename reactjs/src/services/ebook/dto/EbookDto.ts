@@ -2,7 +2,7 @@ export interface EbookListDto {
     id:number;
     ebookName: string;
     link: string;
-    ebookDateStart: Date;
+    ebookDateStart: Date|null;
     pro: boolean;
     ebookPrice: string;
     ebookView: number;
@@ -10,5 +10,5 @@ export interface EbookListDto {
     ebookDislike: number;
     discription: string;
     ebookCover: string;
-    bookPage: number;
+    bookPage: number|null;
 }

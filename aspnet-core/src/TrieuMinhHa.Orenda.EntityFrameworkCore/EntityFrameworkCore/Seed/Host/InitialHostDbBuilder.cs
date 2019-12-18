@@ -16,6 +16,7 @@
             new HostRoleAndUserCreator(_context).Create();
             new DefaultSettingsCreator(_context).Create();
             new DataSeedEbook(_context).Create();
+            new TestDataEbooks(_context).Create();
             _context.SaveChanges();
         }
     }

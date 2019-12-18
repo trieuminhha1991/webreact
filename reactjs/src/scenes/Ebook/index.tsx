@@ -72,20 +72,24 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
   }
   async  actionTemplate(rowData: any, column: any) {
     return <div>
-      <Button type="button" icon="pi pi-search" className="p-button-success"></Button>
+      <Button type="button" icon="pi pi-times" className="p-button-success"></Button>
       <Button type="button" icon="pi pi-pencil" className="p-button-warning"></Button>
     </div>;
   }
   render() {
     const ebook=this.props.ebookStore;
-    var carCount = this.state.cars ? this.state.cars.length: 0;
     var header = <div></div>;
-    var footer = "There are " + carCount + ' cars';
 
     return (
-      <DataTable value={ebook.ebook.items} header={header} footer={footer}>
-        <Column field="vin" header="Vin" />
-        <Column field="year" header="Year" />
+      <DataTable value={ebook.ebook.items} header={header}>
+        /*<Column field="EbookListDto.id" header="id" />*/
+        <Column field="EbookListDto.ebookDateStart" header="Date Start" />
+        <Column field="EbookListDto.pro" header="Pro" />
+        <Column field="EbookListDto.ebookPrice" header="Price" />
+        <Column field="EbookListDto.bookPage" header="Number Page" />
+        <Column field="UserName" header="Author" />
+        <Column field="PbTypeEbookTypeName" header="Type Book" />
+        <Column field="PbTypeFileTypeFileName" header="Type File" />
         <Column body={this.actionTemplate} style={{textAlign:'center', width: '6em'}}/>
       </DataTable>
     );

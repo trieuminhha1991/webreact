@@ -1,14 +1,4 @@
 ﻿using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Abp.Authorization;
-using Abp.Authorization.Roles;
-using Abp.Authorization.Users;
-using Abp.MultiTenancy;
-using TrieuMinhHa.Orenda.Authorization;
-using TrieuMinhHa.Orenda.Authorization.Roles;
-using TrieuMinhHa.Orenda.Authorization.Users;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
 using TrieuMinhHa.Orenda.Authorization.EbookRelationship;
 
 namespace TrieuMinhHa.Orenda.EntityFrameworkCore.Seed.Host
