@@ -83,8 +83,8 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
   render() {
     const {ebook} = this.props.ebookStore;
     return (
-      <DataTable value={ebook === undefined ? [] : ebook.items} paginator={true} rows={10}>
-        <Column field="id" header="Id"/>
+      <DataTable value={ebook === undefined ? [] : ebook.items} paginator={true} rows={10} lazy={true}>
+        <Column field="ebookListDto.ebookName" header="Id"/>
         <Column field="userName" header="Author"/>
       </DataTable>
     );
