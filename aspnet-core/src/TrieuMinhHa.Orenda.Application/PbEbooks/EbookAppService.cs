@@ -12,6 +12,7 @@ using TrieuMinhHa.Orenda.Authorization.Ebook;
 using TrieuMinhHa.Orenda.PbEbooks.Dto;
 using TrieuMinhHa.Orenda.Authorization.Users;
 using TrieuMinhHa.Orenda.Authorization.EbookRelationship;
+using System.Collections.Generic;
 
 namespace TrieuMinhHa.Orenda.PbEbooks
 {
@@ -168,27 +169,17 @@ namespace TrieuMinhHa.Orenda.PbEbooks
         public async Task<ListResultDto<RankDto>> GetAllRank()
         {
             var pbRankes = _rankRepository.GetAll();
-            var Rankes = from o in pbRankes
-                          select new RankDto
-                          {
-                              Id = o.Id,
-                              RankName = o.RankName
-                          };
-            var totalCount = await Rankes.CountAsync();
+            var totalCount = await pbRankes.CountAsync();
             return new PagedResultDto<RankDto>(
                 totalCount,
-                await Rankes.ToListAsync()
+                ObjectMapper.Map<List<RankDto>>(pbRankes.ToList())
             );
         }
         public async Task<ListResultDto<StatusDto>> GetAllStatus()
         {
             var pbStatus = _statusRepository.GetAll();
             var Statuses = from o in pbStatus
-                         select new StatusDto
-                         {
-                             Id = o.Id,
-                             StatusName = o.StatusName
-                         };
+                           select ObjectMapper.Map<StatusDto>(o);
             var totalCount = await Statuses.CountAsync();
             return new PagedResultDto<StatusDto>(
                 totalCount,
@@ -199,11 +190,7 @@ namespace TrieuMinhHa.Orenda.PbEbooks
         {
             var pbTypeBook = _typeBookRepository.GetAll();
             var TypeBookes = from o in pbTypeBook
-                             select new TypeBookDto
-                             {
-                               Id = o.Id,
-                               TypeName = o.TypeName
-                             };
+                             select ObjectMapper.Map<TypeBookDto>(o); ;
             var totalCount = await TypeBookes.CountAsync();
             return new PagedResultDto<TypeBookDto>(
                 totalCount,
