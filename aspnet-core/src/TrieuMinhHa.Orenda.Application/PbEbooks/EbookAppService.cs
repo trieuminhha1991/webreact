@@ -94,6 +94,7 @@ namespace TrieuMinhHa.Orenda.PbEbooks
                            from s9 in j9.DefaultIfEmpty()
                            select new EbookViewDto
                            {
+                               Id = o.Id,
                                EbookListDto = new EbookListDto
                                {
                                    EbookName = o.EbookName,
@@ -107,7 +108,6 @@ namespace TrieuMinhHa.Orenda.PbEbooks
                                    Discription = o.Discription,
                                    EbookCover = o.EbookCover,
                                    BookPage = o.BookPage,
-                                   Id = o.Id
                                },
                                UserName = s1 == null ? "" : s1.UserName,
                                PbClassClassName = s2 == null ? "" : s2.ClassName.ToString(),

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 {
-	public class EbookViewDto
-    {
+	public class EbookViewDto: FullAuditedEntity
+	{
         public EbookListDto EbookListDto { get; set; }
 
 		public string UserName { get; set; }

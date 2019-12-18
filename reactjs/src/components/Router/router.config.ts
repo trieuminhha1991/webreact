@@ -73,7 +73,7 @@ export const appRouters: any = [
     name: 'ebook',
     icon: 'info-circle',
     showInMenu: true,
-    component: LoadableComponent(() => import('../../scenes/About')),
+    component: LoadableComponent(() => import('../../scenes/Ebook')),
   },
   {
     path: '/about',

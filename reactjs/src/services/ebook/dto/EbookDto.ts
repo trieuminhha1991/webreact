@@ -1,5 +1,4 @@
-export interface EbookListDto {
-    id:number;
+export interface ebookListDto {
     ebookName: string;
     link: string;
     ebookDateStart: Date|null;

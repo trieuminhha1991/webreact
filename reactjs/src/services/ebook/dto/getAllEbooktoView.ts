@@ -1,14 +1,15 @@
-import {EbookListDto} from './EbookDto';
+import {ebookListDto} from './EbookDto';
 
 export interface EbookViewDto{
-    EbookListDto: EbookListDto;
-    UserName: string;
-    PbClassClassName: string;
-    PbPlacePlaceName: string;
-    PbRankRankName: string;
-    PbStatusStatusName: string;
-    PbSubjectSectionName: string;
-    PbSubjectEducationSubjectName: string;
-    PbTypeEbookTypeName: string;
-    PbTypeFileTypeFileName: string;
+    id:number,
+    ebookListDto: ebookListDto;
+    userName: string;
+    pbClassClassName: string;
+    pbPlacePlaceName: string;
+    pbRankRankName: string;
+    pbStatusStatusName: string;
+    pbSubjectSectionName: string;
+    pbSubjectEducationSubjectName: string;
+    pbTypeEbookTypeName: string;
+    pbTypeFileTypeFileName: string;
 }

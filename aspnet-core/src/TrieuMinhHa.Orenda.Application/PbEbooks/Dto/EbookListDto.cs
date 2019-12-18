@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 {
-    public class EbookListDto: FullAuditedEntity
+    public class EbookListDto
 	{
 		public string EbookName { get; set; }
 

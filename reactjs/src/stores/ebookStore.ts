@@ -46,18 +46,21 @@ class EbookStore{
     let result = await ebookService.getAllTypeFile();
     this.typeFile=result;
   }
+  @action
   async delete(entityDto: EntityDto) {
     await ebookService.delete(entityDto);
-    this.ebook.items = this.ebook.items.filter((x: EbookViewDto) => x.EbookListDto.id !== entityDto.id);
+    this.ebook.items = this.ebook.items.filter((x: EbookViewDto) => x.ebookListDto.id !== entityDto.id);
   }
+  @action
   async creat(createEbookInput: CreatorEditEbookDto) {
     let result= await ebookService.create(createEbookInput);
     this.ebook.items.push(result)
   }
+  @action
   async edit(createEbookInput: CreatorEditEbookDto) {
     let result= await ebookService.edit(createEbookInput);
     this.ebook.items = this.ebook.items.map((x: EbookViewDto) => {
-      if (x.EbookListDto.id === createEbookInput.id) x = result;
+      if (x.ebookListDto.id === createEbookInput.id) x = result;
       return x;
     });
   }
