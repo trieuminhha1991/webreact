@@ -11,32 +11,32 @@ class EbookService{
         let result = await http.get('/api/services/app/EBook/GetAll', { params: pagedFilterAndSortedRequest });
         return result.data.result;
     }
-    public async getAllClass(pagedFilterAndSortedRequest: PagedEbookResultRequestDto): Promise<PagedResultDto<ClassDto>> {
-        let result = await http.get('/api/services/app/EBook/GetAllClass', { params: pagedFilterAndSortedRequest });
+    public async getAllClass(): Promise<PagedResultDto<ClassDto>> {
+        let result = await http.get('/api/services/app/EBook/GetAllClass');
         return result.data.result;
     }
-    public async getAllRank(pagedFilterAndSortedRequest: PagedEbookResultRequestDto): Promise<PagedResultDto<RankDto>> {
-        let result = await http.get('/api/services/app/EBook/GetAllRank', { params: pagedFilterAndSortedRequest });
+    public async getAllRank(): Promise<PagedResultDto<RankDto>> {
+        let result = await http.get('/api/services/app/EBook/GetAllRank');
         return result.data.result;
     }
-    public async getAllStatus(pagedFilterAndSortedRequest: PagedEbookResultRequestDto): Promise<PagedResultDto<StatusDto>> {
-        let result = await http.get('/api/services/app/EBook/GetAllStatus', { params: pagedFilterAndSortedRequest });
+    public async getAllStatus(): Promise<PagedResultDto<StatusDto>> {
+        let result = await http.get('/api/services/app/EBook/GetAllStatus');
         return result.data.result;
     }
-    public async getAllTypeBook(pagedFilterAndSortedRequest: PagedEbookResultRequestDto): Promise<PagedResultDto<TypeBookDto>> {
-        let result = await http.get('/api/services/app/EBook/GetAllTypeBook', { params: pagedFilterAndSortedRequest });
+    public async getAllTypeBook(): Promise<PagedResultDto<TypeBookDto>> {
+        let result = await http.get('/api/services/app/EBook/GetAllTypeBook' );
         return result.data.result;
     }
-    public async getAllTypeFile(pagedFilterAndSortedRequest: PagedEbookResultRequestDto): Promise<PagedResultDto<TypeFileDto>> {
-        let result = await http.get('/api/services/app/EBook/GetAllTypeFile', { params: pagedFilterAndSortedRequest });
+    public async getAllTypeFile(): Promise<PagedResultDto<TypeFileDto>> {
+        let result = await http.get('/api/services/app/EBook/GetAllTypeFile');
         return result.data.result;
     }
     public async create(createEbookInput: CreatorEditEbookDto) {
-        let result = await http.post('/api/services/app/EBook/Create', createEbookInput);
+        let result = await http.post('/api/services/app/EBook/Create', { params: createEbookInput});
         return result.data.result;
     }
     public async edit(createEbookInput: CreatorEditEbookDto) {
-        let result = await http.post('/api/services/app/EBook/Edit', createEbookInput);
+        let result = await http.post('/api/services/app/EBook/Edit', { params: createEbookInput});
         return result.data.result;
     }
     public async delete(entityDto: EntityDto) {

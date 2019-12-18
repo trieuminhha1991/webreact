@@ -22,33 +22,33 @@ class EbookStore{
     this.ebook = result;
   }
   @action
-  async getAllClass(pagedFilterAndSortedRequest: PagedEbookResultRequestDto){
-    let result = await ebookService.getAllClass(pagedFilterAndSortedRequest);
+  async getAllClass(){
+    let result = await ebookService.getAllClass();
     this.class=result;
   }
   @action
-  async getAllRank(pagedFilterAndSortedRequest: PagedEbookResultRequestDto){
-    let result = await ebookService.getAllRank(pagedFilterAndSortedRequest);
+  async getAllRank(){
+    let result = await ebookService.getAllRank();
     this.rank=result;
   }
   @action
-  async getAllStatus(pagedFilterAndSortedRequest: PagedEbookResultRequestDto){
-    let result = await ebookService.getAllStatus(pagedFilterAndSortedRequest);
+  async getAllStatus(){
+    let result = await ebookService.getAllStatus();
     this.status=result;
   }
   @action
-  async getAllTypeBook(pagedFilterAndSortedRequest: PagedEbookResultRequestDto){
-    let result = await ebookService.getAllTypeBook(pagedFilterAndSortedRequest);
+  async getAllTypeBook(){
+    let result = await ebookService.getAllTypeBook();
     this.typebook=result;
   }
   @action
-  async getAllTypeFile(pagedFilterAndSortedRequest: PagedEbookResultRequestDto){
-    let result = await ebookService.getAllTypeFile(pagedFilterAndSortedRequest);
+  async getAllTypeFile(){
+    let result = await ebookService.getAllTypeFile();
     this.typeFile=result;
   }
   async delete(entityDto: EntityDto) {
     await ebookService.delete(entityDto);
-    this.ebook.items = this.ebook.items.filter((x: EbookViewDto) => x.id !== entityDto.id);
+    this.ebook.items = this.ebook.items.filter((x: EbookViewDto) => x.EbookListDto.id !== entityDto.id);
   }
   async creat(createEbookInput: CreatorEditEbookDto) {
     let result= await ebookService.create(createEbookInput);
