@@ -1,9 +1,9 @@
 export interface EbooktoViewInput {
-    EbookNameFilter:string;
-    UserNameFilter:string;
-    PbClassClassNameFilter:string;
-    PbRankRankNameFilter:string;
-    PbStatusStatusNameFilter:string;
-    PbTypeEbookTypeNameFilter:string;
-    PbTypeFileTypeFileNameFilter:string;
+    ebookNameFilter:string;
+    userNameFilter:string;
+    pbClassClassNameFilter:string;
+    pbRankRankNameFilter:string;
+    pbStatusStatusNameFilter:string;
+    pbTypeEbookTypeNameFilter:string;
+    pbTypeFileTypeFileNameFilter:string;
 }

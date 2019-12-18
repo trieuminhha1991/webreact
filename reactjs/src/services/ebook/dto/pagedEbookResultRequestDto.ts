@@ -1,13 +1,13 @@
 import { PagedFilterAndSortedRequest } from '../../dto/pagedFilterAndSortedRequest';
 
 export interface PagedEbookResultRequestDto extends PagedFilterAndSortedRequest  {
-    EbookNameFilter:string;
-    UserNameFilter:string;
-    PbClassClassNameFilter:string;
-    PbRankRankNameFilter:string;
-    PbStatusStatusNameFilter:string;
-    PbTypeEbookTypeNameFilter:string;
-    PbTypeFileTypeFileNameFilter:string;
+    ebookNameFilter:string;
+    userNameFilter:string;
+    pbClassClassNameFilter:string;
+    pbRankRankNameFilter:string;
+    pbStatusStatusNameFilter:string;
+    pbTypeEbookTypeNameFilter:string;
+    pbTypeFileTypeFileNameFilter:string;
 }
 /*
 export interface PageClassResultRequestDto extends PagedFilterAndSortedRequest  {
