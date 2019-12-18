@@ -49,7 +49,7 @@ class EbookStore{
   @action
   async delete(entityDto: EntityDto) {
     await ebookService.delete(entityDto);
-    this.ebook.items = this.ebook.items.filter((x: EbookViewDto) => x.ebookListDto.id !== entityDto.id);
+    this.ebook.items = this.ebook.items.filter((x: EbookViewDto) => x.id !== entityDto.id);
   }
   @action
   async creat(createEbookInput: CreatorEditEbookDto) {
@@ -60,7 +60,7 @@ class EbookStore{
   async edit(createEbookInput: CreatorEditEbookDto) {
     let result= await ebookService.edit(createEbookInput);
     this.ebook.items = this.ebook.items.map((x: EbookViewDto) => {
-      if (x.ebookListDto.id === createEbookInput.id) x = result;
+      if (x.id === createEbookInput.id) x = result;
       return x;
     });
   }
