@@ -1,4 +1,4 @@
-export  interface CreatorEditEbookDto {
+export interface CreatorEditEbookDto {
     id:number;
     ebookName:string;
     link:string;

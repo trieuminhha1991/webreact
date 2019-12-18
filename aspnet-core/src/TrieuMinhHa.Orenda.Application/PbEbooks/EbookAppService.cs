@@ -125,17 +125,6 @@ namespace TrieuMinhHa.Orenda.PbEbooks
                 await pbEbooks.ToListAsync()
             );
         }
-        public async Task CreateOrEdit(CreatorEditEbookDto input)
-        {
-            if(input.Id==null)
-            {
-                Create(input);
-            }
-            else
-            {
-                Edit(input);
-            }
-        }
         public async Task Create(CreatorEditEbookDto input)
         {
             var ebook = ObjectMapper.Map<Ebook>(input);
@@ -145,7 +134,6 @@ namespace TrieuMinhHa.Orenda.PbEbooks
         {
             var ebook = _ebookRepository.FirstOrDefault(input.Id);
             ObjectMapper.Map(input, ebook);
-
         }
         public async Task Delete(EntityDto input)
         {

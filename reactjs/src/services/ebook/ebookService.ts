@@ -11,7 +11,7 @@ class EbookService{
         let result = await http.get('/api/services/app/EBook/GetAll', { params: pagedFilterAndSortedRequest });
         return result.data.result;
     }
-    public async getallClass(pagedFilterAndSortedRequest: PagedEbookResultRequestDto): Promise<PagedResultDto<ClassDto>> {
+    public async getAllClass(pagedFilterAndSortedRequest: PagedEbookResultRequestDto): Promise<PagedResultDto<ClassDto>> {
         let result = await http.get('/api/services/app/EBook/GetAllClass', { params: pagedFilterAndSortedRequest });
         return result.data.result;
     }
@@ -31,8 +31,12 @@ class EbookService{
         let result = await http.get('/api/services/app/EBook/GetAllTypeFile', { params: pagedFilterAndSortedRequest });
         return result.data.result;
     }
-    public async createoredit(createEbookInput: CreatorEditEbookDto) {
-        let result = await http.post('/api/services/app/EBook/CreateOrEdit', createEbookInput);
+    public async create(createEbookInput: CreatorEditEbookDto) {
+        let result = await http.post('/api/services/app/EBook/Create', createEbookInput);
+        return result.data.result;
+    }
+    public async edit(createEbookInput: CreatorEditEbookDto) {
+        let result = await http.post('/api/services/app/EBook/Edit', createEbookInput);
         return result.data.result;
     }
     public async delete(entityDto: EntityDto) {
