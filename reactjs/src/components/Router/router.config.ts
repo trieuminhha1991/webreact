@@ -26,7 +26,7 @@ export const appRouters: any = [
     permission: '',
     title: 'Home',
     icon: 'home',
-    component: LoadableComponent(() => import('../../scenes/Ebook')),
+    component: LoadableComponent(() => import('../../components/Layout/AppLayout')),
     isLayout: true,
     showInMenu: false,
   },

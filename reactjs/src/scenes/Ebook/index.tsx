@@ -3,7 +3,7 @@ import * as React from 'react';
 import EbookStore from '../../stores/ebookStore';
 import AppComponentBase from '../../components/AppComponentBase';
 import { FormComponentProps } from 'antd/lib/form';
-import { CreatorEditEbookDto } from '../../services/ebook/dto/CreatorEditEbookDto';
+/*import { CreatorEditEbookDto } from '../../services/ebook/dto/CreatorEditEbookDto';*/
 import {DataTable} from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import {Button} from 'primereact/button';
@@ -60,7 +60,8 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
   handleTableChange = (pagination: any) => {
     this.setState({ skipCount: (pagination.current - 1) * this.state.maxResultCount! }, async () => await this.getAll());
   };
-  async creatoredit(CreatorEditEbookDto: CreatorEditEbookDto){
+
+  /*async creatoredit(CreatorEditEbookDto: CreatorEditEbookDto){
     if(this.state.id===0)
     {
       this.props.ebookStore.creat(CreatorEditEbookDto)
@@ -69,7 +70,7 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
     {
       this.props.ebookStore.edit(CreatorEditEbookDto)
     }
-  }
+  }*/
   async  actionTemplate(rowData: any, column: any) {
     return <div>
       <Button type="button" icon="pi pi-times" className="p-button-success"></Button>
@@ -77,11 +78,11 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
     </div>;
   }
   render() {
-    const ebook=this.props.ebookStore;
+    const ebookes=this.props.ebookStore;
     var header = <div></div>;
 
     return (
-      <DataTable value={ebook.ebook.items} header={header}>
+      <DataTable value={ebookes.ebook.items} header={header}>
         /*<Column field="EbookListDto.id" header="id" />*/
         <Column field="EbookListDto.ebookDateStart" header="Date Start" />
         <Column field="EbookListDto.pro" header="Pro" />
