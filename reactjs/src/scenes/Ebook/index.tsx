@@ -9,7 +9,8 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import {Button} from "primereact/button";
 import { EntityDto } from '../../services/dto/entityDto';
-import { Modal } from 'antd';
+import {Modal } from 'antd';
+import CreateOrUpdateEbookNew from './components/creatorEditEbook';
 
 
 export interface IEbookProps extends FormComponentProps {
@@ -20,7 +21,7 @@ export interface IRoleState {
   modalVisible: boolean;
   maxResultCount: number;
   skipCount: number;
-  roleId: number;
+  bookId: number;
   ebookNameFilter: string;
   userNameFilter: string;
   pbClassClassNameFilter: string;
@@ -35,11 +36,12 @@ const confirm = Modal.confirm;
 @inject(Stores.EbookStore)
 @observer
 class Book extends AppComponentBase<IEbookProps, IRoleState> {
+  formRef: any;
   state = {
     modalVisible: false,
     maxResultCount: 10,
     skipCount: 0,
-    roleId: 0,
+    bookId: 0,
     ebookNameFilter: '',
     userNameFilter: '',
     pbClassClassNameFilter: '',
@@ -64,22 +66,47 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
       pbTypeFileTypeFileNameFilter: this.state.pbTypeFileTypeFileNameFilter,
     });
   }
+  saveFormRef = (formRef: any) => {
+    this.formRef = formRef;
+  };
+  Modal = () => {
+    this.setState({
+      modalVisible: !this.state.modalVisible,
+    });
+  };
   async createOrUpdateModalOpen(entityDto: EntityDto) {
     if (entityDto.id === 0) {
       this.props.ebookStore.createEbook();
     } else {
-      await this.props.ebookStore.getRoleForEdit(entityDto);
+      await this.props.ebookStore.getEbook(entityDto);
     }
 
-    this.setState({ roleId: entityDto.id });
+    this.setState({ bookId: entityDto.id });
     this.Modal();
 
     this.formRef.props.form.setFieldsValue({
-      ...this.props.roleStore.roleEdit.role,
-      grantedPermissions: this.props.roleStore.roleEdit.grantedPermissionNames,
+      ...this.props.ebookStore.creatbook,
+      grantedPermissions: '',
     });
   }
+  handleCreate = () => {
+    const form = this.formRef.props.form;
+    form.validateFields(async (err: any, values: any) => {
+      if (err) {
+        return;
+      } else {
+        if (this.state.bookId === 0) {
+          await this.props.ebookStore.creat(values);
+        } else {
+          await this.props.ebookStore.edit({ id: this.state.bookId, ...values });
+        }
+      }
 
+      await this.getAll();
+      this.setState({ modalVisible: false });
+      form.resetFields();
+    });
+  };
   delete(input: EntityDto) {
     const self = this;
     confirm({
@@ -95,24 +122,40 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
   };
   actionTemplate(rowData:any, column:any) {
     return <div>
-      <Button type="button" icon="pi pi-times" className="p-button-success" style={{marginRight: '.5em'}}></Button>
-      <Button type="button" icon="pi pi-pencil" className="p-button-warning"></Button>
+      <Button type="button" icon="pi pi-pencil" className="p-button-success" style={{marginRight: '.5em'}} onClick={() => this.createOrUpdateModalOpen({ id: rowData.id })}></Button>
+      <Button type="button" icon="pi pi-times" className="p-button-warning" onClick={() => this.delete({ id: rowData.id })}></Button>
     </div>;
   }
   render() {
-    const {ebook} = this.props.ebookStore;
+    const {allPermissions,ebook} = this.props.ebookStore;
     return (
-      <DataTable value={ebook === undefined ? [] : ebook.items} paginator={true} rows={10} scrollable={true} scrollHeight="200px" style={{marginTop:'30px'}}>
-        <Column body={this.actionTemplate} style={{textAlign:'center', width: '50px'}}/>
-        <Column field="id" header="Id" style={{textAlign:'center', width: '20px'}}/>
-        <Column field="ebookListDto.ebookName" header="Ebook Name" style={{textAlign:'center', width: '100px'}}/>
-        <Column field="userName" header="Author" style={{textAlign:'center', width: '100px'}}/>
-        <Column field="ebookListDto.link" header="Ebook Name" style={{textAlign:'center', width: '100px'}}/>
-        <Column field="ebookListDto.view" header="Number View" style={{textAlign:'center', width: '30px'}}/>
-        <Column field="ebookListDto.bookpage" header="Number Page" style={{textAlign:'center', width: '30px'}}/>
-        <Column field="pbTypeEbookTypeName" header="Type Book" style={{textAlign:'center', width: '40px'}}/>
-        <Column field="pbTypeFileTypeFileName" header="Type File" style={{textAlign:'center', width: '40px'}}/>
-      </DataTable>
+      <div>
+        <DataTable value={ebook === undefined ? [] : ebook.items} paginator={true} rows={10} scrollable={true}
+                   scrollHeight="200px" style={{ marginTop: '30px' }}>
+          <Column body={this.actionTemplate.bind(this)} style={{ textAlign: 'center', width: '50px' }}/>
+          <Column field="id" header="Id" style={{ textAlign: 'center', width: '20px' }}/>
+          <Column field="ebookListDto.ebookName" header="Ebook Name" style={{ textAlign: 'center', width: '100px' }}/>
+          <Column field="userName" header="Author" style={{ textAlign: 'center', width: '100px' }}/>
+          <Column field="ebookListDto.link" header="Ebook Name" style={{ textAlign: 'center', width: '100px' }}/>
+          <Column field="ebookListDto.view" header="Number View" style={{ textAlign: 'center', width: '30px' }}/>
+          <Column field="ebookListDto.bookpage" header="Number Page" style={{ textAlign: 'center', width: '30px' }}/>
+          <Column field="pbTypeEbookTypeName" header="Type Book" style={{ textAlign: 'center', width: '40px' }}/>
+          <Column field="pbTypeFileTypeFileName" header="Type File" style={{ textAlign: 'center', width: '40px' }}/>
+        </DataTable>
+        <CreateOrUpdateEbookNew
+          wrappedComponentRef={this.saveFormRef}
+          visible={this.state.modalVisible}
+          onCancel={() =>
+            this.setState({
+              modalVisible: false,
+            })
+          }
+          modalType={this.state.bookId === 0 ? 'edit' : 'create'}
+          onOk={this.handleCreate}
+          permissions={allPermissions}
+          ebookStore={this.props.ebookStore}
+        />
+      </div>
     );
   }
 }

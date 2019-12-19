@@ -7,6 +7,7 @@ import { PagedEbookResultRequestDto } from '../services/ebook/dto/pagedEbookResu
 import { ClassDto, RankDto, StatusDto, TypeBookDto, TypeFileDto } from '../services/ebook/dto/EbookRelationshipDto';
 import { CreatorEditEbookDto } from '../services/ebook/dto/CreatorEditEbookDto';
 import { EntityDto } from '../services/dto/entityDto';
+import { GetAllPermissionsOutput } from '../services/role/dto/getAllPermissionsOutput';
 
 class EbookStore{
   @observable ebook!: PagedResultDto<EbookViewDto>;
@@ -16,6 +17,7 @@ class EbookStore{
   @observable typebook!: PagedResultDto<TypeBookDto>;
   @observable typeFile!: PagedResultDto<TypeFileDto>;
   @observable creatbook: any;
+  @observable allPermissions: GetAllPermissionsOutput[] = [];
 
   @action
   async createEbook() {

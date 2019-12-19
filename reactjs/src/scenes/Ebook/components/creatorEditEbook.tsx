@@ -18,7 +18,7 @@ export interface ICreateOrUpdateEbookProps extends FormComponentProps {
     onOk: () => void;
     permissions: GetAllPermissionsOutput[];
 }
-class CreateOrUpdateREbook extends React.Component<ICreateOrUpdateEbookProps>{
+class CreateOrUpdateEbookNew extends React.Component<ICreateOrUpdateEbookProps>{
     state = {
         confirmDirty: false,
     };
@@ -81,7 +81,7 @@ class CreateOrUpdateREbook extends React.Component<ICreateOrUpdateEbookProps>{
                 <Tabs defaultActiveKey={'role'} size={'small'} tabBarGutter={64}>
                     <TabPane tab={L('RoleDetails')} key={'role'}>
                         <FormItem label={L('RoleName')} {...formItemLayout}>
-                            {getFieldDecorator('name', { rules: rules.name })(<Input />)}
+                            {getFieldDecorator('ebookName', { rules: rules.name })(<Input />)}
                         </FormItem>
                         <FormItem label={L('DisplayName')} {...formItemLayout}>
                             {getFieldDecorator('displayName', { rules: rules.displayName })(<Input />)}
@@ -100,4 +100,5 @@ class CreateOrUpdateREbook extends React.Component<ICreateOrUpdateEbookProps>{
         );
     }
 }
-export default Form.create<ICreateOrUpdateEbookProps>()(CreateOrUpdateREbook);
+
+export default Form.create<ICreateOrUpdateEbookProps>()(CreateOrUpdateEbookNew);
