@@ -5,12 +5,11 @@ import { FormComponentProps } from 'antd/lib/form';
 /*import { CreatorEditEbookDto } from '../../services/ebook/dto/CreatorEditEbookDto';*/
 import EbookStore from '../../stores/ebookStore';
 import Stores from '../../stores/storeIdentifier';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import {Button} from "primereact/button";
 import { EntityDto } from '../../services/dto/entityDto';
-import {Modal } from 'antd';
+import { Card, Col, Dropdown, Menu, Modal, Row, Table } from 'antd';
 import CreateOrUpdateEbookNew from './components/creatorEditEbook';
+import { L } from '../../lib/abpUtility';
+import Button from 'antd/es/button';
 
 
 export interface IEbookProps extends FormComponentProps {
@@ -39,7 +38,7 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
   formRef: any;
   state = {
     modalVisible: false,
-    maxResultCount: 10,
+    maxResultCount: 3,
     skipCount: 0,
     bookId: 0,
     ebookNameFilter: '',
@@ -120,32 +119,79 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
   handleTableChange = (pagination: any) => {
     this.setState({ skipCount: (pagination.current - 1) * this.state.maxResultCount! }, async () => await this.getAll());
   };
-  actionTemplate(rowData:any, column:any) {
-    return <div>
-      <Button type="button" icon="pi pi-pencil" className="p-button-success" style={{marginRight: '.5em'}} onClick={() => this.createOrUpdateModalOpen({ id: rowData.id })}></Button>
-      <Button type="button" icon="pi pi-trash" className="p-button-warning" onClick={() => this.delete({ id: rowData.id })}></Button>
-    </div>;
-  }
-  
   render() {
     const {allPermissions,ebook} = this.props.ebookStore;
-    const header = <div style={{textAlign:'right'}}>
-        <Button type="button" icon="pi pi-plus" iconPos="left" label="New Ebook" onClick={() => this.createOrUpdateModalOpen({ id: 0 })}></Button>
-      </div>;
+    const columns = [
+      { title: L('EbookName'), dataIndex: 'ebookListDto.ebookName', key: 'ebookName', width: 150, render: (text: string) => <div>{text}</div> },
+      { title: L('UserName'), dataIndex: 'userName', key: 'userName', width: 150, render: (text: string) => <div>{text}</div> },
+      {
+        title: L('Actions'),
+        width: 150,
+        render: (text: string, item: any) => (
+          <div>
+            <Dropdown
+              trigger={['click']}
+              overlay={
+                <Menu>
+                  <Menu.Item onClick={() => this.createOrUpdateModalOpen({ id: item.id })}>{L('Edit')}</Menu.Item>
+                  <Menu.Item onClick={() => this.delete({ id: item.id })}>{L('Delete')}</Menu.Item>
+                </Menu>
+              }
+              placement="bottomLeft"
+            >
+              <Button type="primary" icon="setting">
+                {L('Actions')}
+              </Button>
+            </Dropdown>
+          </div>
+        ),
+      },
+    ];
     return (
-    <div>
-        <DataTable value={ebook === undefined ? [] : ebook.items} paginator={true} rows={3} scrollable={true} header={header} resizableColumns={true}
-                   scrollHeight="500px" style={{width: '100%'}} emptyMessage="No records found">
-          <Column body={this.actionTemplate.bind(this)} style={{ textAlign: 'center', width: '50px' }}/>
-          <Column field="id" header="Id" style={{ textAlign: 'center', width: '20px' }}/>
-          <Column field="ebookListDto.ebookName" header="Ebook Name" style={{ textAlign: 'center', width: '100px' }}  filter={true}/>
-          <Column field="userName" header="Author" style={{ textAlign: 'center', width: '200px' }} filter={true}/>
-          <Column field="ebookListDto.link" header="Ebook Name" style={{ textAlign: 'center', width: '100px' }}/>
-          <Column field="ebookListDto.view" header="Number View" style={{ textAlign: 'center', width: '30px' }}/>
-          <Column field="ebookListDto.bookpage" header="Number Page" style={{ textAlign: 'center', width: '30px' }}/>
-          <Column field="pbTypeEbookTypeName" header="Type Book" style={{ textAlign: 'center', width: '40px' }}  filter={true}/>
-          <Column field="pbTypeFileTypeFileName" header="Type File" style={{ textAlign: 'center', width: '40px' }}  filter={true}/>
-        </DataTable>
+    <Card>
+      <Row>
+        <Col
+          xs={{ span: 4, offset: 0 }}
+          sm={{ span: 4, offset: 0 }}
+          md={{ span: 4, offset: 0 }}
+          lg={{ span: 2, offset: 0 }}
+          xl={{ span: 2, offset: 0 }}
+          xxl={{ span: 2, offset: 0 }}
+        >
+          <h2>{L('Roles')}</h2>
+        </Col>
+        <Col
+          xs={{ span: 14, offset: 0 }}
+          sm={{ span: 15, offset: 0 }}
+          md={{ span: 15, offset: 0 }}
+          lg={{ span: 1, offset: 21 }}
+          xl={{ span: 1, offset: 21 }}
+          xxl={{ span: 1, offset: 21 }}
+        >
+          <Button type="primary" shape="circle" icon="plus" onClick={() => this.createOrUpdateModalOpen({ id: 0 })} />
+        </Col>
+      </Row>
+      <Row style={{ marginTop: 20 }}>
+        <Col
+          xs={{ span: 24, offset: 0 }}
+          sm={{ span: 24, offset: 0 }}
+          md={{ span: 24, offset: 0 }}
+          lg={{ span: 24, offset: 0 }}
+          xl={{ span: 24, offset: 0 }}
+          xxl={{ span: 24, offset: 0 }}
+        >
+          <Table
+            rowKey="id"
+            size={'default'}
+            bordered={true}
+            pagination={{ pageSize: this.state.maxResultCount, total: ebook === undefined ? 0 : ebook.totalCount, defaultCurrent: 1 }}
+            columns={columns}
+            loading={ebook === undefined ? true : false}
+            dataSource={ebook === undefined ? [] : ebook.items}
+            onChange={this.handleTableChange}
+          />
+        </Col>
+      </Row>
         <CreateOrUpdateEbookNew
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.modalVisible}
@@ -159,7 +205,7 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
           permissions={allPermissions}
           ebookStore={this.props.ebookStore}
         />
-      </div>
+      </Card>
     );
   }
 }

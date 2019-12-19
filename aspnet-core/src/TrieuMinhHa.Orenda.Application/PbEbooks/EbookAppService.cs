@@ -67,7 +67,8 @@ namespace TrieuMinhHa.Orenda.PbEbooks
                         .WhereIf(!string.IsNullOrWhiteSpace(input.PbRankRankNameFilter), e => e.PbRankFk != null && e.PbRankFk.RankName.ToLower().Contains(input.PbRankRankNameFilter.ToLower().Trim()))
                         .WhereIf(!string.IsNullOrWhiteSpace(input.PbStatusStatusNameFilter), e => e.PbStatusFk != null && e.PbStatusFk.StatusName.ToLower().Contains(input.PbStatusStatusNameFilter.ToLower().Trim()))
                         .WhereIf(!string.IsNullOrWhiteSpace(input.PbTypeEbookTypeNameFilter), e => e.PbTypeEbookFk != null && e.PbTypeEbookFk.TypeName.ToLower().Contains(input.PbTypeEbookTypeNameFilter.ToLower().Trim()))
-                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbTypeFileTypeFileNameFilter), e => e.PbTypeFileFk != null && e.PbTypeFileFk.TypeFileName.ToLower().Contains(input.PbTypeFileTypeFileNameFilter.ToLower().Trim()));
+                        .WhereIf(!string.IsNullOrWhiteSpace(input.PbTypeFileTypeFileNameFilter), e => e.PbTypeFileFk != null && e.PbTypeFileFk.TypeFileName.ToLower().Contains(input.PbTypeFileTypeFileNameFilter.ToLower().Trim()))
+                        ;
 
             var pagedAndFilteredPbEbooks = filteredPbEbooks
                 .OrderBy(input.Sorting ?? "id asc")
