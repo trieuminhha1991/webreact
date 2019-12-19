@@ -123,14 +123,17 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
   actionTemplate(rowData:any, column:any) {
     return <div>
       <Button type="button" icon="pi pi-pencil" className="p-button-success" style={{marginRight: '.5em'}} onClick={() => this.createOrUpdateModalOpen({ id: rowData.id })}></Button>
-      <Button type="button" icon="pi pi-times" className="p-button-warning" onClick={() => this.delete({ id: rowData.id })}></Button>
+      <Button type="button" icon="pi pi-trash" className="p-button-warning" onClick={() => this.delete({ id: rowData.id })}></Button>
     </div>;
   }
   render() {
     const {allPermissions,ebook} = this.props.ebookStore;
+    const header = <div style={{textAlign:'right'}}>
+        <Button type="button" icon="pi pi-plus" iconPos="left" label="New Ebook" onClick={() => this.createOrUpdateModalOpen({ id: 0 })}></Button>
+      </div>;
     return (
-      <div>
-        <DataTable value={ebook === undefined ? [] : ebook.items} paginator={true} rows={10} scrollable={true}
+    <div>
+        <DataTable value={ebook === undefined ? [] : ebook.items} paginator={true} rows={10} scrollable={true} header={header}
                    scrollHeight="200px" style={{ marginTop: '30px' }}>
           <Column body={this.actionTemplate.bind(this)} style={{ textAlign: 'center', width: '50px' }}/>
           <Column field="id" header="Id" style={{ textAlign: 'center', width: '20px' }}/>

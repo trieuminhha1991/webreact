@@ -4,8 +4,6 @@ import {Form, Input, Modal, Tabs} from "antd";
 import {FormComponentProps} from "antd/lib/form";
 import EbookStore from "../../../stores/ebookStore";
 import {L} from "../../../lib/abpUtility";
-import rules from "../../Roles/components/createOrUpdateRole.validation";
-import CheckboxGroup from 'antd/lib/checkbox/Group';
 import FormItem from "antd/lib/form/FormItem";
 
 
@@ -23,11 +21,11 @@ class CreateOrUpdateEbookNew extends React.Component<ICreateOrUpdateEbookProps>{
         confirmDirty: false,
     };
     render() {
-        const { permissions } = this.props;
+        /*const { permissions } = this.props;*/
 
-        const options = permissions.map((x: GetAllPermissionsOutput) => {
+        /*const options = permissions.map((x: GetAllPermissionsOutput) => {
             return { label: x.displayName, value: x.name };
-        });
+        });*/
 
         const formItemLayout = {
             labelCol: {
@@ -48,7 +46,7 @@ class CreateOrUpdateEbookNew extends React.Component<ICreateOrUpdateEbookProps>{
             },
         };
 
-        const tailFormItemLayout = {
+        /*const tailFormItemLayout = {
             labelCol: {
                 xs: { span: 6 },
                 sm: { span: 6 },
@@ -65,7 +63,7 @@ class CreateOrUpdateEbookNew extends React.Component<ICreateOrUpdateEbookProps>{
                 xl: { span: 18 },
                 xxl: { span: 18 },
             },
-        };
+        };*/
 
         const { getFieldDecorator } = this.props.form;
 
@@ -81,18 +79,55 @@ class CreateOrUpdateEbookNew extends React.Component<ICreateOrUpdateEbookProps>{
                 <Tabs defaultActiveKey={'role'} size={'small'} tabBarGutter={64}>
                     <TabPane tab={L('RoleDetails')} key={'role'}>
                         <FormItem label={L('RoleName')} {...formItemLayout}>
-                            {getFieldDecorator('ebookName', { rules: rules.name })(<Input />)}
+                            {getFieldDecorator('ebookName')(<Input />)}
                         </FormItem>
-                        <FormItem label={L('DisplayName')} {...formItemLayout}>
-                            {getFieldDecorator('displayName', { rules: rules.displayName })(<Input />)}
+                        <FormItem label={L('Link')} {...formItemLayout}>
+                            {getFieldDecorator('link')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('EbookDateStart')} {...formItemLayout}>
+                            {getFieldDecorator('ebookDateStart')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('EbookPrice')} {...formItemLayout}>
+                            {getFieldDecorator('ebookPrice')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('EbookView')} {...formItemLayout}>
+                            {getFieldDecorator('ebookView')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('EbookLike')} {...formItemLayout}>
+                            {getFieldDecorator('ebookLike')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('EbookDislike')} {...formItemLayout}>
+                            {getFieldDecorator('ebookDislike')(<Input />)}
                         </FormItem>
                         <FormItem label={L('Description')} {...formItemLayout}>
-                            {getFieldDecorator('description')(<Input />)}
+                            {getFieldDecorator('discription')(<Input />)}
                         </FormItem>
-                    </TabPane>
-                    <TabPane tab={L('RolePermission')} key={'permission'}>
-                        <FormItem {...tailFormItemLayout}>
-                            {getFieldDecorator('grantedPermissions', { valuePropName: 'value' })(<CheckboxGroup options={options} />)}
+                        <FormItem label={L('EbookCover')} {...formItemLayout}>
+                            {getFieldDecorator('ebookCover')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('BookPage')} {...formItemLayout}>
+                            {getFieldDecorator('bookPage')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('UserId')} {...formItemLayout}>
+                            {getFieldDecorator('userId')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('PbClassId')} {...formItemLayout}>
+                            {getFieldDecorator('pbClassId')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('PbPlaceId')} {...formItemLayout}>
+                            {getFieldDecorator('pbPlaceId')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('PbRankId')} {...formItemLayout}>
+                            {getFieldDecorator('pbRankId')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('PbStatusId')} {...formItemLayout}>
+                            {getFieldDecorator('pbStatusId')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('PbTypeEbookId')} {...formItemLayout}>
+                            {getFieldDecorator('pbTypeEbookId')(<Input />)}
+                        </FormItem>
+                        <FormItem label={L('PbTypeFileId')} {...formItemLayout}>
+                            {getFieldDecorator('pbTypeFileId')(<Input />)}
                         </FormItem>
                     </TabPane>
                 </Tabs>
