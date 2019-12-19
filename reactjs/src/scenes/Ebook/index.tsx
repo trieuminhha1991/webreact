@@ -96,7 +96,7 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
         return;
       } else {
         if (this.state.bookId === 0) {
-          await this.props.ebookStore.creat(values);
+          await this.props.ebookStore.creat({ id: 0, ...values });
         } else {
           await this.props.ebookStore.edit({ id: this.state.bookId, ...values });
         }
@@ -126,6 +126,7 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
       <Button type="button" icon="pi pi-trash" className="p-button-warning" onClick={() => this.delete({ id: rowData.id })}></Button>
     </div>;
   }
+  
   render() {
     const {allPermissions,ebook} = this.props.ebookStore;
     const header = <div style={{textAlign:'right'}}>
@@ -133,17 +134,17 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
       </div>;
     return (
     <div>
-        <DataTable value={ebook === undefined ? [] : ebook.items} paginator={true} rows={10} scrollable={true} header={header}
-                   scrollHeight="200px" style={{ marginTop: '30px' }}>
+        <DataTable value={ebook === undefined ? [] : ebook.items} paginator={true} rows={3} scrollable={true} header={header} resizableColumns={true}
+                   scrollHeight="500px" style={{width: '100%'}} emptyMessage="No records found">
           <Column body={this.actionTemplate.bind(this)} style={{ textAlign: 'center', width: '50px' }}/>
           <Column field="id" header="Id" style={{ textAlign: 'center', width: '20px' }}/>
-          <Column field="ebookListDto.ebookName" header="Ebook Name" style={{ textAlign: 'center', width: '100px' }}/>
-          <Column field="userName" header="Author" style={{ textAlign: 'center', width: '100px' }}/>
+          <Column field="ebookListDto.ebookName" header="Ebook Name" style={{ textAlign: 'center', width: '100px' }}  filter={true}/>
+          <Column field="userName" header="Author" style={{ textAlign: 'center', width: '200px' }} filter={true}/>
           <Column field="ebookListDto.link" header="Ebook Name" style={{ textAlign: 'center', width: '100px' }}/>
           <Column field="ebookListDto.view" header="Number View" style={{ textAlign: 'center', width: '30px' }}/>
           <Column field="ebookListDto.bookpage" header="Number Page" style={{ textAlign: 'center', width: '30px' }}/>
-          <Column field="pbTypeEbookTypeName" header="Type Book" style={{ textAlign: 'center', width: '40px' }}/>
-          <Column field="pbTypeFileTypeFileName" header="Type File" style={{ textAlign: 'center', width: '40px' }}/>
+          <Column field="pbTypeEbookTypeName" header="Type Book" style={{ textAlign: 'center', width: '40px' }}  filter={true}/>
+          <Column field="pbTypeFileTypeFileName" header="Type File" style={{ textAlign: 'center', width: '40px' }}  filter={true}/>
         </DataTable>
         <CreateOrUpdateEbookNew
           wrappedComponentRef={this.saveFormRef}

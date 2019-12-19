@@ -2,7 +2,7 @@ import http from '../httpService';
 import {PagedResultDto} from "../dto/pagedResultDto";
 import {EbookViewDto} from './dto/getAllEbooktoView';
 import {PagedEbookResultRequestDto} from './dto/pagedEbookResultRequestDto';
-import {CreatorEditEbookDto} from './dto/CreatorEditEbookDto';
+import { CreatorEditEbookDto } from './dto/CreatorEditEbookDto';
 import {EntityDto} from "../dto/entityDto";
 import {ClassDto, StatusDto, RankDto, TypeBookDto, TypeFileDto} from './dto/EbookRelationshipDto';
 import { ebookListDto } from './dto/EbookDto';
@@ -37,11 +37,11 @@ class EbookService{
         return result.data.result;
     }
     public async create(createEbookInput: CreatorEditEbookDto) {
-        let result = await http.post('/api/services/app/EBook/Create', { params: createEbookInput});
+        let result = await http.post('/api/services/app/EBook/Create', createEbookInput);
         return result.data.result;
     }
-    public async edit(createEbookInput: CreatorEditEbookDto): Promise<EbookViewDto> {
-        let result = await http.put('/api/services/app/EBook/Update', { params: createEbookInput});
+    public async edit(updateEbookInput: CreatorEditEbookDto): Promise<EbookViewDto> {
+        let result = await http.put('/api/services/app/EBook/Update', updateEbookInput);
         return result.data.result;
     }
     public async delete(entityDto: EntityDto) {

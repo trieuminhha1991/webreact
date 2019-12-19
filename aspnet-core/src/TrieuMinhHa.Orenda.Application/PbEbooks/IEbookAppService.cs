@@ -9,6 +9,6 @@ namespace TrieuMinhHa.Orenda.PbEbooks
     {
         Task<ListResultDto<EbookViewDto>> GetAll(EbooktoViewInput input);
         Task Delete(EntityDto input);
-        Task Create(CreatorEditEbookDto input);
+        Task<EbookViewDto> Create(EbookListDto input);
     }
 }

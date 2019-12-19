@@ -7,9 +7,10 @@ using TrieuMinhHa.Orenda.Authorization.Ebook;
 
 namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 {
-	[AutoMap(typeof(Ebook))]
-	public class CreatorEditEbookDto : FullAuditedEntity
+	[AutoMapFrom(typeof(Ebook))]
+	public class CreatorEbookDto
 	{
+		[Required]
 		public string EbookName { get; set; }
 		public string Link { get; set; }
 

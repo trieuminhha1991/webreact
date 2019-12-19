@@ -7,7 +7,7 @@ using TrieuMinhHa.Orenda.Authorization.Ebook;
 
 namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 {
-	[AutoMapFrom(typeof(Ebook))]
+	[AutoMapTo(typeof(Ebook))]
 	public class EbookListDto: FullAuditedEntity
 	{
 		public string EbookName { get; set; }

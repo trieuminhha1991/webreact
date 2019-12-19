@@ -142,26 +142,37 @@ namespace TrieuMinhHa.Orenda.PbEbooks
                 await pbEbooks.ToListAsync()
             );
         }
-        public async Task Create(CreatorEditEbookDto input)
+        public async Task<EbookViewDto> Create(EbookListDto input)
         {
-            var ebook = ObjectMapper.Map<Ebook>(input);
+            Ebook ebook = ObjectMapper.Map<Ebook>(input);
             _ebookRepository.InsertAsync(ebook);
-        }
-        public async Task<EbookViewDto> Update(CreatorEditEbookDto input)
-        {
-
-            var ebook = _ebookRepository.FirstOrDefault(input.Id);
-            ObjectMapper.Map(input, ebook);
-            var ebookListDto=ObjectMapper.Map<EbookListDto>(ebook);
             EbookViewDto EbookView = new EbookViewDto();
-            EbookView.EbookListDto = ebookListDto;
+            EbookView.EbookListDto = input;
             EbookView.UserName = _userRepository.FirstOrDefault(input.UserId).UserName;
-            EbookView.PbClassClassName = _classRepository.FirstOrDefault(input.PbClassId.GetValueOrDefault()).ClassName;
-            EbookView.PbPlacePlaceName = _pbplaceRepository.FirstOrDefault(input.PbPlaceId.GetValueOrDefault()).PlaceName;
+            if (input.PbClassId.HasValue) EbookView.PbClassClassName = _classRepository.FirstOrDefault(input.PbClassId.Value).ClassName;
+            if (input.PbPlaceId.HasValue) EbookView.PbPlacePlaceName = _pbplaceRepository.FirstOrDefault(input.PbPlaceId.GetValueOrDefault()).PlaceName;
             EbookView.PbRankRankName = _rankRepository.FirstOrDefault(input.PbRankId).RankName;
             EbookView.PbStatusStatusName = _statusRepository.FirstOrDefault(input.PbStatusId).StatusName;
-            EbookView.PbSubjectSectionName = _subjectRepository.FirstOrDefault(input.PbSubjectEducationId.GetValueOrDefault()).SectionName;
-            EbookView.PbSubjectEducationSubjectName = _subjectEducationRepository.FirstOrDefault(input.PbSubjectEducationId.GetValueOrDefault()).SubjectName;
+            if (input.PbSubjectEducationId.HasValue) EbookView.PbSubjectSectionName = _subjectRepository.FirstOrDefault(input.PbSubjectEducationId.GetValueOrDefault()).SectionName;
+            if (input.PbSubjectEducationId.HasValue) EbookView.PbSubjectEducationSubjectName = _subjectEducationRepository.FirstOrDefault(input.PbSubjectEducationId.GetValueOrDefault()).SubjectName;
+            EbookView.PbTypeEbookTypeName = _typeBookRepository.FirstOrDefault(input.PbTypeEbookId).TypeName;
+            EbookView.PbTypeFileTypeFileName = _typeFileRepository.FirstOrDefault(input.PbTypeFileId).TypeFileName;
+            return EbookView;
+
+        }
+        public async Task<EbookViewDto> Update(EbookListDto input)
+        {
+            Ebook ebook = ObjectMapper.Map<Ebook>(input);
+            _ebookRepository.UpdateAsync(ebook);
+            EbookViewDto EbookView = new EbookViewDto();
+            EbookView.EbookListDto = input;
+            EbookView.UserName = _userRepository.FirstOrDefault(input.UserId).UserName;
+            if(input.PbClassId.HasValue) EbookView.PbClassClassName = _classRepository.FirstOrDefault(input.PbClassId.Value).ClassName;
+            if (input.PbPlaceId.HasValue) EbookView.PbPlacePlaceName = _pbplaceRepository.FirstOrDefault(input.PbPlaceId.GetValueOrDefault()).PlaceName;
+            EbookView.PbRankRankName = _rankRepository.FirstOrDefault(input.PbRankId).RankName;
+            EbookView.PbStatusStatusName = _statusRepository.FirstOrDefault(input.PbStatusId).StatusName;
+            if(input.PbSubjectEducationId.HasValue) EbookView.PbSubjectSectionName = _subjectRepository.FirstOrDefault(input.PbSubjectEducationId.GetValueOrDefault()).SectionName;
+            if (input.PbSubjectEducationId.HasValue) EbookView.PbSubjectEducationSubjectName = _subjectEducationRepository.FirstOrDefault(input.PbSubjectEducationId.GetValueOrDefault()).SubjectName;
             EbookView.PbTypeEbookTypeName = _typeBookRepository.FirstOrDefault(input.PbTypeEbookId).TypeName;
             EbookView.PbTypeFileTypeFileName = _typeFileRepository.FirstOrDefault(input.PbTypeFileId).TypeFileName;
             return EbookView;
