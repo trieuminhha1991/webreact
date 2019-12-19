@@ -40,12 +40,12 @@ class EbookService{
         let result = await http.post('/api/services/app/EBook/Create', { params: createEbookInput});
         return result.data.result;
     }
-    public async edit(createEbookInput: CreatorEditEbookDto) {
-        let result = await http.post('/api/services/app/EBook/Edit', { params: createEbookInput});
+    public async edit(createEbookInput: CreatorEditEbookDto): Promise<EbookViewDto> {
+        let result = await http.put('/api/services/app/EBook/Update', { params: createEbookInput});
         return result.data.result;
     }
     public async delete(entityDto: EntityDto) {
-        let result = await http.delete('api/services/app/User/Delete', { params: entityDto });
+        let result = await http.delete('api/services/app/EBook/Delete', { params: entityDto });
         return result.data;
     }
 }

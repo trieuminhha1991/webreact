@@ -10,9 +10,7 @@ namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 	[AutoMap(typeof(Ebook))]
 	public class CreatorEditEbookDto : FullAuditedEntity
 	{
-		[Required]
 		public string EbookName { get; set; }
-		[Required]
 		public string Link { get; set; }
 
 		public DateTime? EbookDateStart { get; set; }

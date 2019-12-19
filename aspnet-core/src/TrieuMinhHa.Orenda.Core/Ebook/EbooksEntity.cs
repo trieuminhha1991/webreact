@@ -13,7 +13,6 @@ namespace TrieuMinhHa.Orenda.Authorization.Ebook
 		[Required]
 		public virtual string EbookName { get; set; }
 
-		[Required]
 		public virtual string Link { get; set; }
 
 		public virtual DateTime? EbookDateStart { get; set; }

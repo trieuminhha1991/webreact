@@ -78,7 +78,7 @@ class CreateOrUpdateEbookNew extends React.Component<ICreateOrUpdateEbookProps>{
             >
                 <Tabs defaultActiveKey={'role'} size={'small'} tabBarGutter={64}>
                     <TabPane tab={L('RoleDetails')} key={'role'}>
-                        <FormItem label={L('RoleName')} {...formItemLayout}>
+                        <FormItem label={L('EbookName')} {...formItemLayout}>
                             {getFieldDecorator('ebookName')(<Input />)}
                         </FormItem>
                         <FormItem label={L('Link')} {...formItemLayout}>

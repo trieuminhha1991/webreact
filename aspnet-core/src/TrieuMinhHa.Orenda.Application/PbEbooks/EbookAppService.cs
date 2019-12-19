@@ -147,10 +147,24 @@ namespace TrieuMinhHa.Orenda.PbEbooks
             var ebook = ObjectMapper.Map<Ebook>(input);
             _ebookRepository.InsertAsync(ebook);
         }
-        public async Task Edit(CreatorEditEbookDto input)
+        public async Task<EbookViewDto> Update(CreatorEditEbookDto input)
         {
+
             var ebook = _ebookRepository.FirstOrDefault(input.Id);
             ObjectMapper.Map(input, ebook);
+            var ebookListDto=ObjectMapper.Map<EbookListDto>(ebook);
+            EbookViewDto EbookView = new EbookViewDto();
+            EbookView.EbookListDto = ebookListDto;
+            EbookView.UserName = _userRepository.FirstOrDefault(input.UserId).UserName;
+            EbookView.PbClassClassName = _classRepository.FirstOrDefault(input.PbClassId.GetValueOrDefault()).ClassName;
+            EbookView.PbPlacePlaceName = _pbplaceRepository.FirstOrDefault(input.PbPlaceId.GetValueOrDefault()).PlaceName;
+            EbookView.PbRankRankName = _rankRepository.FirstOrDefault(input.PbRankId).RankName;
+            EbookView.PbStatusStatusName = _statusRepository.FirstOrDefault(input.PbStatusId).StatusName;
+            EbookView.PbSubjectSectionName = _subjectRepository.FirstOrDefault(input.PbSubjectEducationId.GetValueOrDefault()).SectionName;
+            EbookView.PbSubjectEducationSubjectName = _subjectEducationRepository.FirstOrDefault(input.PbSubjectEducationId.GetValueOrDefault()).SubjectName;
+            EbookView.PbTypeEbookTypeName = _typeBookRepository.FirstOrDefault(input.PbTypeEbookId).TypeName;
+            EbookView.PbTypeFileTypeFileName = _typeFileRepository.FirstOrDefault(input.PbTypeFileId).TypeFileName;
+            return EbookView;
         }
         public async Task Delete(EntityDto input)
         {
