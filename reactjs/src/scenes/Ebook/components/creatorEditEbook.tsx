@@ -75,7 +75,7 @@ class CreateOrUpdateREbook extends React.Component<ICreateOrUpdateEbookProps>{
                 cancelText={L('Cancel')}
                 okText={L('OK')}
                 onCancel={this.props.onCancel}
-                title={L('Role')}
+                title={L('Ebook')}
                 onOk={this.props.onOk}
             >
                 <Tabs defaultActiveKey={'role'} size={'small'} tabBarGutter={64}>

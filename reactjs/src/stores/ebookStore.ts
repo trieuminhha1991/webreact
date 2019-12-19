@@ -15,11 +15,42 @@ class EbookStore{
   @observable status!: PagedResultDto<StatusDto>;
   @observable typebook!: PagedResultDto<TypeBookDto>;
   @observable typeFile!: PagedResultDto<TypeFileDto>;
+  @observable creatbook: any;
 
+  @action
+  async createEbook() {
+    this.creatbook = {
+      id:0,
+      ebookName:'',
+      link:'',
+      ebookDateStart:'',
+      pro: false,
+      ebookPrice :0,
+      ebookView :0,
+      ebookLike :0,
+      ebookDislike:0,
+      discription:'',
+      ebookCover:'',
+      bookPage:0,
+      userId:1,
+      pbClassId: 1,
+      pbPlaceId: null,
+      pbRankId:1,
+      pbStatusId:1,
+      pbSubjectId:null,
+      pbSubjectEducationId:null,
+      pbTypeEbookId:1,
+      pbTypeFileId: 1,
+    };
+  }
   @action
   async getAll(pagedFilterAndSortedRequest: PagedEbookResultRequestDto) {
     let result = await ebookService.getAll(pagedFilterAndSortedRequest);
     this.ebook = result;
+  }
+  @action
+  async getEbook(entity: EntityDto) {
+    this.creatbook=await ebookService.getEBook(entity);
   }
   @action
   async getAllClass(){

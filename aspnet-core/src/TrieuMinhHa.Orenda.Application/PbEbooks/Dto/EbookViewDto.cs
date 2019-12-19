@@ -5,6 +5,7 @@ using System.Text;
 
 namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 {
+	
 	public class EbookViewDto: FullAuditedEntity
 	{
         public EbookListDto EbookListDto { get; set; }
@@ -26,6 +27,7 @@ namespace TrieuMinhHa.Orenda.PbEbooks.Dto
 		public string PbTypeEbookTypeName { get; set; }
 
 		public string PbTypeFileTypeFileName { get; set; }
+
 
 	}
 }

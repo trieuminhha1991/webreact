@@ -5,10 +5,15 @@ import {PagedEbookResultRequestDto} from './dto/pagedEbookResultRequestDto';
 import {CreatorEditEbookDto} from './dto/CreatorEditEbookDto';
 import {EntityDto} from "../dto/entityDto";
 import {ClassDto, StatusDto, RankDto, TypeBookDto, TypeFileDto} from './dto/EbookRelationshipDto';
+import { ebookListDto } from './dto/EbookDto';
 
 class EbookService{
     public async getAll(pagedFilterAndSortedRequest: PagedEbookResultRequestDto): Promise<PagedResultDto<EbookViewDto>> {
         let result = await http.get('/api/services/app/EBook/GetAll', { params: pagedFilterAndSortedRequest });
+        return result.data.result;
+    }
+    public async getEBook(entityDto: EntityDto): Promise<ebookListDto> {
+        let result = await http.get('/api/services/app/EBook/GetEbook', { params: entityDto });
         return result.data.result;
     }
     public async getAllClass(): Promise<PagedResultDto<ClassDto>> {

@@ -7,8 +7,9 @@ import EbookStore from '../../stores/ebookStore';
 import Stores from '../../stores/storeIdentifier';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import {CreatorEditEbookDto} from "../../services/ebook/dto/CreatorEditEbookDto";
 import {Button} from "primereact/button";
+import { EntityDto } from '../../services/dto/entityDto';
+import { Modal } from 'antd';
 
 
 export interface IEbookProps extends FormComponentProps {
@@ -29,6 +30,8 @@ export interface IRoleState {
   pbTypeFileTypeFileNameFilter:string;
   id: number,
 }
+const confirm = Modal.confirm;
+
 @inject(Stores.EbookStore)
 @observer
 class Book extends AppComponentBase<IEbookProps, IRoleState> {
@@ -61,20 +64,35 @@ class Book extends AppComponentBase<IEbookProps, IRoleState> {
       pbTypeFileTypeFileNameFilter: this.state.pbTypeFileTypeFileNameFilter,
     });
   }
+  async createOrUpdateModalOpen(entityDto: EntityDto) {
+    if (entityDto.id === 0) {
+      this.props.ebookStore.createEbook();
+    } else {
+      await this.props.ebookStore.getRoleForEdit(entityDto);
+    }
+
+    this.setState({ roleId: entityDto.id });
+    this.Modal();
+
+    this.formRef.props.form.setFieldsValue({
+      ...this.props.roleStore.roleEdit.role,
+      grantedPermissions: this.props.roleStore.roleEdit.grantedPermissionNames,
+    });
+  }
+
+  delete(input: EntityDto) {
+    const self = this;
+    confirm({
+      title: 'Do you Want to delete these items?',
+      onOk() {
+        self.props.ebookStore.delete(input);
+      },
+      onCancel() {},
+    });
+  }
   handleTableChange = (pagination: any) => {
     this.setState({ skipCount: (pagination.current - 1) * this.state.maxResultCount! }, async () => await this.getAll());
   };
-
-  creatoredit(CreatorEditEbookDto: CreatorEditEbookDto){
-    if(this.state.id===0)
-    {
-      this.props.ebookStore.creat(CreatorEditEbookDto)
-    }
-    else
-    {
-      this.props.ebookStore.edit(CreatorEditEbookDto)
-    }
-  }
   actionTemplate(rowData:any, column:any) {
     return <div>
       <Button type="button" icon="pi pi-times" className="p-button-success" style={{marginRight: '.5em'}}></Button>

@@ -115,6 +115,16 @@ namespace TrieuMinhHa.Orenda.PbEbooks
                                    Discription = o.Discription,
                                    EbookCover = o.EbookCover,
                                    BookPage = o.BookPage,
+                                   Id=o.Id,
+                                   UserId=o.UserId,
+                                   PbClassId=o.PbClassId,
+                                   PbPlaceId=o.PbPlaceId,
+                                   PbRankId=o.PbRankId,
+                                   PbStatusId=o.PbStatusId,
+                                   PbSubjectId=o.PbSubjectId,
+                                   PbSubjectEducationId=o.PbSubjectEducationId,
+                                   PbTypeEbookId=o.PbTypeEbookId,
+                                   PbTypeFileId=o.PbTypeFileId
                                },
                                UserName = s1 == null ? "" : s1.UserName,
                                PbClassClassName = s2 == null ? "" : s2.ClassName.ToString(),
@@ -145,6 +155,11 @@ namespace TrieuMinhHa.Orenda.PbEbooks
         public async Task Delete(EntityDto input)
         {
             _ebookRepository.DeleteAsync(input.Id);
+        }
+        public async Task<EbookListDto> GetEbook(EntityDto input)
+        {
+            var ebook=_ebookRepository.FirstOrDefault(input.Id);
+            return ObjectMapper.Map<EbookListDto>(ebook);
         }
         public async Task<ListResultDto<ClassDto>> GetAllClass()
         {

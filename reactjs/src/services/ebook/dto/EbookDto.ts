@@ -10,4 +10,5 @@ export interface ebookListDto {
     discription: string;
     ebookCover: string;
     bookPage: number|null;
+    id:number;
 }
