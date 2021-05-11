@@ -5018,9 +5018,9 @@ hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0:
     react-is "^16.7.0"
 
 hosted-git-info@^2.1.4:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
-  integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 hpack.js@^2.1.6:
   version "2.1.6"
@@ -8417,6 +8417,16 @@ pretty-format@^24.8.0:
     ansi-regex "^4.0.0"
     ansi-styles "^3.2.0"
     react-is "^16.8.4"
+
+primeicons@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/primeicons/-/primeicons-2.0.0.tgz#ec3e5a8d4d04a09309225a5a57deb911e08dc0d3"
+  integrity sha512-GJTCeMSQU8UU1GqbsaDrg/IH+b/vSinJQl52NVpdJ7sShYLZA8Eq6jLF48Ye3N/dQloGrE07i7XsZvxQ9pNbqg==
+
+primereact@^3.3.3:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/primereact/-/primereact-3.4.0.tgz#cbc0534abd4917355975d0213b612df49f44d880"
+  integrity sha512-XsLkInlYsFSK5/FRAM0JMyJEc+9lyI6feKJLNbQIwpker6mk587T3uwfZd8RYhmUGpj/jKEnZ+3V9tl+PKniAg==
 
 private@^0.1.6:
   version "0.1.8"
